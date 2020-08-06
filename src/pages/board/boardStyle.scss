@@ -1,0 +1,60 @@
+$color-primary: #089de3;
+$color-secondary: #f37800;
+$color-tertiary: #f5f5f5;
+$color-black: #000;
+$color-blackLight: #424242;
+$color-white: #fff;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*===================
+BOARD PAGE
+=====================*/
+.board {
+  width: 100%;
+  background-color: $color-tertiary;
+
+  &_content {
+    display: flex;
+    flex-direction: column;
+    max-width: 1140px;
+    margin: 0 auto;
+    background-color: $color-white;
+    color: $color-blackLight;
+
+    h1 {
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      font-weight: 400;
+      color: inherit;
+      margin-bottom: 0.5rem;
+    }
+
+    & > p {
+      font-size: 1rem;
+      color: inherit;
+      text-align: justify;
+      margin-bottom: 2rem;
+    }
+
+    &_list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+
+      &_item {
+        &:not(:last-child) {
+          margin-bottom: 2rem;
+        }
+
+        @media only screen and (min-width: 400px) {
+          margin-right: 1rem;
+        }
+      }
+    }
+  }
+}

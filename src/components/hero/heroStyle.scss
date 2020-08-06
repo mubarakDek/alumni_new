@@ -1,0 +1,35 @@
+$color-primary: #089de3;
+$color-secondary: #f37800;
+$color-tertiary: #f5f5f5;
+$color-black: #000;
+$color-blackLight: #424242;
+$color-white: #fff;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*========================
+Hero
+=========================*/
+
+.hero {
+  min-height: calc(40vh - 54px);
+  background: linear-gradient(rgba(0, 53, 88, 0.6), rgba(6, 95, 179, 0.2)),
+    url("../../images/mm.jpg") center/cover no-repeat fixed;
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    font-size: 2rem;
+    font-weight: 100;
+    text-transform: uppercase;
+    letter-spacing: 10px;
+    color: $color-white;
+  }
+}

@@ -1,0 +1,113 @@
+$color-primary: #089de3;
+$color-secondary: #f37800;
+$color-tertiary: #f5f5f5;
+$color-black: #000;
+$color-blackLight: #424242;
+$color-white: #fff;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*========================
+CONTACT PAGE
+=========================*/
+
+.contact_page {
+  width: 100%;
+  background-color: $color-tertiary;
+
+  &_content {
+    max-width: 1140px;
+    margin: 0 auto;
+    background-color: $color-white;
+
+    &_wrap {
+      display: flex;
+      flex-direction: column;
+
+      h2 {
+        font-size: 1.3rem;
+        font-weight: 400;
+        text-decoration: underline;
+        margin-bottom: 1rem;
+      }
+
+      &_info {
+        margin-bottom: 2rem;
+
+        h3 {
+          font-size: 1.1rem;
+          font-weight: 400;
+        }
+
+        p {
+          font-size: 1rem;
+          font-weight: 200;
+          margin-bottom: 2rem;
+        }
+
+        @media only screen and (min-width: 576px) {
+          padding: 0 4rem;
+        }
+      }
+
+      &_message {
+        width: 100%;
+
+        input,
+        textarea {
+          width: 100%;
+          padding: 0.5rem 1rem;
+          font-size: 0.8rem;
+          margin: 0.5rem 0;
+          border-radius: 4px;
+          border: none;
+          background-color: #eee;
+          border: 1px solid transparent;
+          transition: all 0.3s;
+
+          &:focus {
+            outline: none;
+            border: 1px solid $color-primary;
+          }
+        }
+
+        .btn {
+          display: flex;
+          button {
+            margin-left: auto;
+            margin-top: 0.5rem;
+          }
+        }
+
+        @media only screen and (min-width: 576px) {
+          padding: 1rem 4rem;
+        }
+
+        @media only screen and (min-width: 992px) {
+          .user_info {
+            display: flex;
+
+            & > input:first-child {
+              margin-right: 1.5rem;
+            }
+          }
+        }
+      }
+
+      @media only screen and (min-width: 768px) {
+        flex-direction: row;
+        align-items: flex-start;
+
+        &_message {
+          padding: 0;
+          margin-left: 4rem;
+          margin-right: 2.5rem;
+        }
+      }
+    }
+  }
+}
