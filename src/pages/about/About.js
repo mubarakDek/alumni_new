@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../about/aboutStyle.scss";
 import Hero from "../../components/hero/Hero";
 import SectionTitle from "../../components/SectionTitle";
+import Loader from "../../components/loader";
 
 import axios from "axios";
 
@@ -17,13 +18,13 @@ function About() {
     };
 
     getData();
-  }, [about]);
+  }, []);
 
   return (
     <section className="about">
       <Hero title="About Us" />
       {!about.length ? (
-        <h1>Loading</h1>
+        <Loader />
       ) : (
         <div className="about_content mx-auto p-5">
           <SectionTitle title="About Us" />
