@@ -1,0 +1,144 @@
+$color-primary: #2699fb;
+$color-bluedark: #0a6fc4;
+$color-blue: #7fc4fd;
+$color-bluenormal: #bce0fd;
+$color-bluelight: #e0f0fc;
+$color-secondary: #f37800;
+$color-tertiary: #f5f5f5;
+$color-black: #000;
+$color-blackLight: #424242;
+$color-white: #fff;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*========================
+SINGLE NEWS PAGE
+=========================*/
+
+.profile {
+  width: 100%;
+  background-color: $color-tertiary;
+
+  &_content {
+    max-width: 1140px;
+    background-color: $color-white;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    &_left {
+      display: flex;
+      flex-direction: column;
+      background-color: $color-bluelight;
+      width: 18rem;
+      max-height: 20rem;
+      margin-right: 2rem;
+      margin-bottom: 2rem;
+
+      figure {
+        width: 10rem;
+        height: 10rem;
+        margin-bottom: 0.5rem;
+        border-radius: 100px;
+        overflow: hidden;
+
+        img {
+          width: 100%;
+          height: 100%;
+          vertical-align: bottom;
+          object-fit: cover;
+        }
+      }
+
+      .short_bio {
+        label {
+          display: block;
+          color: $color-primary;
+          text-transform: uppercase;
+          font-size: 0.7rem;
+        }
+        textarea {
+          width: 100%;
+          border-radius: 4px;
+          padding: 0.5rem;
+          border: 1px solid transparent;
+          font-size: 0.9rem;
+          transition: all 0.3s;
+          color: $color-blackLight;
+
+          &:focus {
+            outline: none;
+            border: 1px solid $color-primary;
+          }
+        }
+      }
+    }
+
+    &_right {
+      flex: 1;
+
+      .form {
+        &_personal_details,
+        &_education,
+        &_experience {
+          background-color: $color-bluelight;
+        }
+        &_personal_details {
+        }
+
+        &_education {
+        }
+
+        &_experience {
+        }
+
+        .btn {
+          display: flex;
+        }
+      }
+
+      @media only screen and (min-width: 576px) {
+        .small_div {
+          display: flex;
+          flex-wrap: nowrap;
+          justify-content: space-between;
+          width: 100%;
+
+          & > * {
+            width: 47%;
+          }
+        }
+      }
+      @media only screen and (min-width: 768px) {
+        .form {
+          .form_group {
+            display: flex;
+            justify-content: space-between;
+
+            .input {
+              &:first-child {
+                margin-right: 1rem;
+              }
+            }
+          }
+          .small_div {
+            display: flex;
+            flex-wrap: nowrap;
+            width: 49%;
+
+            & > * {
+              width: 47%;
+            }
+          }
+        }
+      }
+    }
+    @media only screen and (min-width: 992px) {
+      flex-wrap: nowrap;
+    }
+  }
+}

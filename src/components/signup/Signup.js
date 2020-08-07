@@ -3,6 +3,7 @@ import "../signup/signupStyle.scss";
 import SectionTitle from "../../components/SectionTitle";
 import Input from "../input/Input";
 import { Link } from "@reach/router";
+import Select from "../select/Select";
 
 function Signup() {
   return (
@@ -40,18 +41,15 @@ function Signup() {
               />
             </div>
             <div className="form_group">
-              <Input
-                label="Department *"
-                type="text"
-                name="department"
-                placeholder="Department"
-              />
-              <Input
-                label="Degree *"
-                type="text"
-                name="degree"
-                placeholder="Degree"
-              />
+              <Select label="Department *">
+                <option value="">Informatics</option>
+                <option value="">Economicies</option>
+                <option value="">Engineering</option>
+              </Select>
+              <Select label="Degree *">
+                <option value="">Bachelor Degree</option>
+                <option value="">Masters Degree</option>
+              </Select>
             </div>
             <div className="form_group">
               <Input label="Year" type="text" name="year" placeholder="Year" />

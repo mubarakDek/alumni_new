@@ -11,9 +11,9 @@ import Members from "./pages/members/Members";
 import Contact from "./pages/contact/Contact";
 import Login from "./components/login/Login";
 import Signup from "./components/signup/Signup";
-import SingleNews from "./pages/singleNews/singleNews";
-import AccountDropdown from "./components/accountDropdown/Account";
 import ChangePass from "./components/changePassword/ChangePass";
+import Profile from "./pages/profile/Profile";
+import SingleNews from "./pages/singleNews/SingleNews";
 function App() {
   return (
     <>
@@ -21,14 +21,15 @@ function App() {
       <Router>
         <Home path="/" />
         <Events path="/events" />
-        <NewsPage path="/newspage" />
+        <NewsPage path="/news" />
         <Board path="/board" />
         <Members path="/members" />
         <Contact path="/contact" />
         <About path="/about" />
         <Login path="/login" />
         <Signup path="/signup" />
-        <ChangePass path="/changepass" />
+        <Profile path="profile" />
+        <SingleNews path="singleNews" />
       </Router>
       <Footer />
     </>

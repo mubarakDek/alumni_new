@@ -4,6 +4,8 @@ import HomeHero from "../components/HomeHero";
 import News from "../components/News";
 import Event from "../components/Event";
 import GoogleMap from "../components/GoogleMap";
+import SectionTitle from "../components/SectionTitle";
+import { Link } from "@reach/router";
 
 function Home() {
   return (
@@ -49,10 +51,16 @@ function Home() {
         </div>
       </section>
 
-      <section className="upcoming_events">
-        <Event />
-        <Event />
-        <Event />
+      <section className="upcoming_events mx-auto p-5">
+        <SectionTitle title="Upcoming events" />
+        <div className="upcoming_events_list">
+          <Event />
+          <Event />
+          <Event />
+        </div>
+        <Link to="/events" className="btn-primary mx-auto">
+          Load More
+        </Link>
       </section>
 
       <section className="google_map">

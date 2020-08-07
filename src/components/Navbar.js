@@ -26,7 +26,7 @@ function Navbar() {
               <Link className="menu_link" to="/events">
                 Events
               </Link>
-              <Link className="menu_link" to="/newspage">
+              <Link className="menu_link" to="/news">
                 News
               </Link>
               <Link className="menu_link" to="/board">

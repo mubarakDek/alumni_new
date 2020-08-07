@@ -11,7 +11,7 @@ function SingleNews() {
           <p>
             Posted on <span>25 May, 2020</span>
           </p>
-          <Link to="/newspage" className="btn-primary">
+          <Link to="/news" className="btn-primary">
             Back to News
           </Link>
         </div>

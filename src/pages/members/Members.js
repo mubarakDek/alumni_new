@@ -2,7 +2,7 @@ import React from "react";
 import "../members/membersStyle.scss";
 import Member from "../../components/member/Member";
 import SectionTitle from "../../components/SectionTitle";
-import Select from "../../components/select/Select";
+import FilterSelect from "../../components/filterSelect/FilterSelect";
 
 function Members() {
   return (
@@ -14,11 +14,11 @@ function Members() {
           <div className="members_content_main_left">
             <h1 className="px-3 py-2">Filters</h1>
             <div className="filters">
-              <Select title="Class" />
-              <Select title="Faculty" />
-              <Select title="Degree" />
-              <Select title="Location" />
-              <Select title="Other Education" />
+              <FilterSelect title="Class" />
+              <FilterSelect title="Faculty" />
+              <FilterSelect title="Degree" />
+              <FilterSelect title="Location" />
+              <FilterSelect title="Other Education" />
             </div>
           </div>
           <div className="members_content_main_right px-4 pt-4">

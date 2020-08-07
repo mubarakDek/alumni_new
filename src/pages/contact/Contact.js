@@ -2,6 +2,7 @@ import React from "react";
 import "../contact/contactStyle.scss";
 import Hero from "../../components/hero/Hero";
 import SectionTitle from "../../components/SectionTitle";
+import Input from "../../components/input/Input";
 
 function Contact() {
   return (
@@ -30,10 +31,10 @@ function Contact() {
             <h2>Leave Us Your Message</h2>
             <form>
               <div className="user_info">
-                <input type="text" placeholder="Name" />
-                <input type="email" placeholder="Email" />
+                <Input placeholder="Name" />
+                <Input placeholder="Email" />
               </div>
-              <input type="text" placeholder="Subject" />
+              <Input placeholder="Subject" />
               <textarea name="" id="" cols="30" rows="10"></textarea>
               <div className="btn">
                 <button className="btn-primary">Send Message</button>

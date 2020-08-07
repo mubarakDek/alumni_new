@@ -17,6 +17,7 @@ $color-white: #fff;
 /* =======================
   ACCOUNT DROPDOWN
 =========================*/
+
 .account {
   position: relative;
   z-index: 11;
@@ -70,4 +71,55 @@ $color-white: #fff;
   .active .account_content {
     display: block;
   }
+}
+
+/* =======================
+  POPUP - CHANGE PASSWORD
+=========================*/
+.popup {
+  min-width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background-color: #1f1d1dea;
+  z-index: 9999;
+
+  &_content {
+    min-width: 30rem;
+    padding: 3rem 4rem;
+    margin-top: 3rem;
+    box-shadow: 0 1rem 4rem rgba($color-black, 0.2);
+    background-color: $color-white;
+    border-radius: 4px;
+    position: relative;
+  }
+
+  &_changePass {
+    transition: all 0.3s;
+  }
+
+  &_close {
+    color: $color-blackLight;
+    position: absolute;
+    top: 0.1rem;
+    right: 1.3rem;
+    font-size: 2rem;
+    text-decoration: none;
+    transition: all 0.2s;
+    cursor: pointer;
+
+    &:hover {
+      color: rgb(207, 0, 0);
+    }
+  }
+}
+
+.popup.active {
+  opacity: 1;
+  visibility: visible;
 }

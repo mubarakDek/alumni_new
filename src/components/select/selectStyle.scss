@@ -1,4 +1,8 @@
-$color-primary: #089de3;
+$color-primary: #2699fb;
+$color-bluedark: #0a6fc4;
+$color-blue: #7fc4fd;
+$color-bluenormal: #bce0fd;
+$color-bluelight: #f1f9ff;
 $color-secondary: #f37800;
 $color-tertiary: #f5f5f5;
 $color-black: #000;
@@ -14,74 +18,31 @@ $color-white: #fff;
 /*===================
 SELECT
 =====================*/
+.select {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 
-.wrapper {
-  ul {
-    list-style-type: none;
+  & label {
+    font-size: 0.9rem;
+    color: $color-primary;
   }
 
-  &_select_wrap {
-    width: 100%;
-    position: relative;
-    -moz-user-select: none;
-    font-size: 1rem;
+  & select {
+    border: 1px solid $color-bluenormal;
+    border-radius: 4px;
+    padding: 0.7rem 1rem;
+    margin-bottom: 1.2rem;
+    font-size: 0.8rem;
+    transition: all 0.2s;
 
-    .default_option {
-      cursor: pointer;
-
-      & > li {
-        padding: 10px 20px;
-
-        &:focus,
-        &:active,
-        &:hover {
-          background-color: rgba($color: $color-primary, $alpha: 1);
-        }
-      }
-
-      .select_ul {
-        width: 100%;
-        margin-bottom: 0.5rem;
-        display: none;
-
-        li {
-          padding: 0.5rem 0.5rem 0.5rem 2.5rem;
-          cursor: pointer;
-
-          &:hover {
-            background-color: rgba($color: $color-primary, $alpha: 0.1);
-          }
-        }
-      }
-
-      &:before {
-        content: "";
-        position: absolute;
-        top: 14px;
-        right: 18px;
-        width: 6px;
-        height: 6px;
-        border: 2px solid;
-        border-color: transparent transparent $color-blackLight
-          $color-blackLight;
-        transform: rotate(-45deg);
-
-        background-color: rgba($color: $color-primary, $alpha: 0.1);
-
-        &:hover .default_option li {
-          background-color: rgba($color: $color-primary, $alpha: 1);
-        }
-      }
+    &:focus {
+      outline: none;
+      border: 1px solid $color-primary;
     }
 
-    &.active .default_option:before {
-      transform: rotate(-225deg);
-      top: 19px;
-      border-color: transparent transparent $color-white $color-white;
-    }
-
-    &.active .select_ul {
-      display: block;
+    &:invalid {
+      border-color: red;
     }
   }
 }
