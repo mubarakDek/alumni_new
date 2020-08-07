@@ -11,7 +11,6 @@ import Members from "./pages/members/Members";
 import Contact from "./pages/contact/Contact";
 import Login from "./components/login/Login";
 import Signup from "./components/signup/Signup";
-import ChangePass from "./components/changePassword/ChangePass";
 import Profile from "./pages/profile/Profile";
 import SingleNews from "./pages/singleNews/SingleNews";
 function App() {
