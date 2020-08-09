@@ -13,7 +13,7 @@ function About() {
 
   useEffect(() => {
     const getData = async () => {
-      const response = await axios.get(`${apiURL}/general`);
+      const response = await axios.get(`${apiURL}/items/general`);
       setAbout(response.data.data);
     };
 

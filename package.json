@@ -14,7 +14,8 @@
     "react-dom": "^16.13.1",
     "react-facebook": "^8.1.4",
     "react-scripts": "3.4.1",
-    "react-twitter-widgets": "^1.9.5"
+    "react-twitter-widgets": "^1.9.5",
+    "swr": "^0.3.0"
   },
   "scripts": {
     "start": "react-scripts start",

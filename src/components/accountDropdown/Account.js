@@ -30,30 +30,30 @@ function AccountDropdown() {
       </div>
 
       <div
-        class={
+        className={
           popup ? "popup popup_changePass active" : "popup popup_changePass "
         }
       >
-        <div class="popup_content ">
-          <p onClick={() => setPopup(!popup)} class="popup_close">
+        <div className="popup_content ">
+          <p onClick={() => setPopup(!popup)} className="popup_close">
             &times;
           </p>
           <h3>Change Password</h3>
           <form action="">
-            <div class="form-group">
+            <div className="form-group">
               <Input type="password" placeholder="Old Password" />
             </div>
-            <div class="form-group">
+            <div className="form-group">
               <Input type="password" placeholder="New Password" />
             </div>
-            <div class="form-group">
+            <div className="form-group">
               <Input type="password" placeholder="Confirm Password" />
             </div>
 
             <input
               type="submit"
               id=""
-              class="btn-primary"
+              className="btn-primary"
               value="Change Password"
             />
           </form>

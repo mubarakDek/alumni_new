@@ -28,7 +28,7 @@ function App() {
         <Login path="/login" />
         <Signup path="/signup" />
         <Profile path="profile" />
-        <SingleNews path="singleNews" />
+        <SingleNews path="singleNews/:id/:imgId" />
       </Router>
       <Footer />
     </>
