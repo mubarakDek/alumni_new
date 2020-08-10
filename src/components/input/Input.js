@@ -1,11 +1,11 @@
 import React from "react";
 import "../input/inputStyle.scss";
 
-function Input({ label, type, name, placeholder }) {
+function Input({ label, name, ...attributes }) {
   return (
     <div className="input">
       <label htmlFor={name}>{label}</label>
-      <input type={type} name={name} id={name} placeholder={placeholder} />
+      <input name={name} {...attributes} autoComplete="on" />
     </div>
   );
 }

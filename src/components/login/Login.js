@@ -19,7 +19,7 @@ function Login() {
             <div className="form_options my-2">
               <div className="checkbox my-2">
                 <input type="checkbox" id="rememberMe" />
-                <label for="rememberMe">Remeber Me</label>
+                <label htmlFor="rememberMe">Remeber Me</label>
               </div>
               <Link to="/about">Forgot Password?</Link>
             </div>

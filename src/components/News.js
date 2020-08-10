@@ -8,7 +8,7 @@ import { apiURL } from "../globals";
 import useSWR from "swr";
 
 function News({ title, imgId, createOn, newsId }) {
-  const { data, error } = useSWR(`${apiURL}/files/${imgId || 1}`);
+  const { data } = useSWR(`${apiURL}/files/${imgId || 1}`);
   let img = "./images/news_placeholder.jpg";
   if (data) {
     img = data.data.data.full_url;
