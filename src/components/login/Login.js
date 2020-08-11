@@ -1,20 +1,64 @@
-import React from "react";
+import React, { useState } from "react";
+import { navigate } from "@reach/router";
+
 import { Link } from "@reach/router";
 import "../login/loginStyle.scss";
 import SectionTitle from "../SectionTitle";
 import Input from "../input/Input";
+import axios from "axios";
+// api url
+import { apiURL } from "../../globals";
 
 function Login() {
+  const [user, setUser] = useState({});
+
+  function handleInputChange(e) {
+    // console.log(e.persist());
+    let { name, value } = e.target;
+
+    setUser((prev) => {
+      return { ...prev, [name]: value };
+    });
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    console.log(user);
+
+    axios
+      .post(`${apiURL}/auth/authenticate`, user)
+      .then(function (res) {
+        console.log(res);
+        if (res.status === 200) {
+          navigate("/profile");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   return (
     <section className="login">
       <div className="content mx-auto p-5">
         <SectionTitle title="Login" />
 
         <div className="content_wrap">
-          <form className="form">
+          <form className="form" onSubmit={handleSubmit}>
             <div className="form_group">
-              <Input type="email" placeholder="Email Address" />
-              <Input type="password" placeholder="*************" />
+              <Input
+                name="email"
+                type="email"
+                placeholder="Email Address"
+                onChange={(e) => handleInputChange(e)}
+              />
+              <Input
+                name="password"
+                type="password"
+                placeholder="*************"
+                onChange={(e) => handleInputChange(e)}
+              />
             </div>
             <div className="form_options my-2">
               <div className="checkbox my-2">

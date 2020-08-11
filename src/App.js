@@ -10,6 +10,7 @@ import Board from "./pages/board/Board";
 import Members from "./pages/members/Members";
 import Contact from "./pages/contact/Contact";
 import Login from "./components/login/Login";
+import Success from "./components/success/Success";
 import Signup from "./components/signup/Signup";
 import Profile from "./pages/profile/Profile";
 import SingleNews from "./pages/singleNews/SingleNews";
@@ -26,6 +27,7 @@ function App() {
         <Contact path="/contact" />
         <About path="/about" />
         <Login path="/login" />
+        <Success path="/success" />
         <Signup path="/signup" />
         <Profile path="profile" />
         <SingleNews path="singleNews/:id/:imgId" />
