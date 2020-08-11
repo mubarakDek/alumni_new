@@ -30,10 +30,17 @@ EVENTS PAGE
 
   &_upcoming {
     &_list {
+      &_item {
+        width: 100%;
+      }
       @media only screen and (min-width: 768px) {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
+
+        &_item {
+          width: 47%;
+        }
       }
     }
   }

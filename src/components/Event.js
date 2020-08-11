@@ -1,19 +1,23 @@
 import React from "react";
 import { Link } from "@reach/router";
 
-function Event() {
+let year, month, day;
+
+function Event({ title, date }) {
+  if (date) {
+    year = date.split("-")[0];
+    month = date.split("-")[1];
+    day = date.split("-")[2];
+  }
   return (
     <Link to="/events" className="event">
       <div className="date">
         <h3>
-          May <span>24</span>2020
+          {month} <span>{day}</span> {year}
         </h3>
       </div>
       <div className="title">
-        <h1>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio
-          corrupti animi temporibus.
-        </h1>
+        <h1>{title}</h1>
       </div>
     </Link>
   );
