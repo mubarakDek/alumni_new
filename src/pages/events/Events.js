@@ -3,6 +3,7 @@ import "../events/eventsStyle.scss";
 import Event from "../../components/Event";
 import SectionTitle from "../../components/SectionTitle";
 import Hero from "../../components/hero/Hero";
+import { isDatePassed } from "../../helpers/index";
 
 // api url
 import { apiURL } from "../../globals";
@@ -23,6 +24,7 @@ function Events() {
 
   if (data) {
     const { data: event } = data;
+    console.log(event);
 
     return (
       <section className="events">
@@ -32,18 +34,20 @@ function Events() {
         <div className="events_upcoming mx-auto mt-5 p-5">
           <SectionTitle title="upcoming events" />
           <div className="events_upcoming_list">
-            {event.map((post) => {
-              return (
-                <div key={post.id} className="events_upcoming_list_item">
-                  <Event
-                    title={post.description}
-                    createOn={post.created_on}
-                    eventId={post.id}
-                    date={post.date}
-                  />
-                </div>
-              );
-            })}
+            {event
+              .filter((e) => !isDatePassed(e.date))
+              .map((post) => {
+                return (
+                  <div key={post.id} className="events_upcoming_list_item">
+                    <Event
+                      title={post.description}
+                      createOn={post.created_on}
+                      eventId={post.id}
+                      date={post.date}
+                    />
+                  </div>
+                );
+              })}
           </div>
           <button className="btn-primary mx-auto mt-4" type="button">
             Load More
@@ -63,18 +67,20 @@ function Events() {
             </select>
           </div>
           <div className="events_completed_list">
-            {event.map((post) => {
-              return (
-                <div key={post.id} className="events_upcoming_list_item">
-                  <Event
-                    title={post.description}
-                    createOn={post.created_on}
-                    eventId={post.id}
-                    date={post.date}
-                  />
-                </div>
-              );
-            })}
+            {event
+              .filter((e) => isDatePassed(e.date))
+              .map((post) => {
+                return (
+                  <div key={post.id} className="events_upcoming_list_item">
+                    <Event
+                      title={post.description}
+                      createOn={post.created_on}
+                      eventId={post.id}
+                      date={post.date}
+                    />
+                  </div>
+                );
+              })}
           </div>
           <button className="btn-primary mx-auto mt-4" type="button">
             Load More
