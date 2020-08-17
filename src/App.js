@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Router } from "@reach/router";
 import About from "./pages/about/About";
 import Home from "./pages/Home";
@@ -14,24 +14,35 @@ import Success from "./components/success/Success";
 import Signup from "./components/signup/Signup";
 import Profile from "./pages/profile/Profile";
 import SingleNews from "./pages/singleNews/SingleNews";
+
+//context
+import { userContext } from "./context/userContext";
+
 function App() {
+  let [userState, setUserState] = useState({
+    loggedInUser: "",
+    isLoggedIn: false,
+  });
+
   return (
     <>
-      <Navbar />
-      <Router>
-        <Home path="/" />
-        <Events path="/events" />
-        <NewsPage path="/news" />
-        <Board path="/board" />
-        <Members path="/members" />
-        <Contact path="/contact" />
-        <About path="/about" />
-        <Login path="/login" />
-        <Success path="/success" />
-        <Signup path="/signup" />
-        <Profile path="profile" />
-        <SingleNews path="singleNews/:id/:imgId" />
-      </Router>
+      <userContext.Provider value={{ userState, setUserState }}>
+        <Navbar />
+        <Router>
+          <Home path="/" />
+          <Events path="/events" />
+          <NewsPage path="/news" />
+          <Board path="/board" />
+          <Members path="/members" />
+          <Contact path="/contact" />
+          <About path="/about" />
+          <Login path="/login" />
+          <Success path="/success" />
+          <Signup path="/signup" />
+          <Profile path="profile" />
+          <SingleNews path="singleNews/:id/:imgId" />
+        </Router>
+      </userContext.Provider>
       <Footer />
     </>
   );

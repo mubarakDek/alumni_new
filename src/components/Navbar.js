@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "@reach/router";
 import AccountDropdown from "./accountDropdown/Account";
 
 function Navbar() {
+  let [isLoggedIn, setIsloggedIn] = useState(false);
+
   const handleToggle = () => {
     const menu = document.querySelector(".menu");
     menu.classList.toggle("active");
   };
+
+  useEffect(() => {
+    if (sessionStorage.getItem("userData")) {
+      setIsloggedIn(true);
+    }
+  }, []);
 
   return (
     <nav className="nav">
@@ -49,7 +57,7 @@ function Navbar() {
           <Link className="btn menu_link" to="/login">
             Login
           </Link>
-          <AccountDropdown className="user" />
+          {isLoggedIn ? <AccountDropdown className="user" /> : null}
         </ul>
         <div onClick={handleToggle} className="toggle fontawesome-list"></div>
       </div>

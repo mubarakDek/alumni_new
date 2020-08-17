@@ -11,10 +11,17 @@ import axios from "axios";
 // api url
 import { apiURL } from "../../globals";
 
+//password encription
+import { passwordEncode, passwordDecode } from "../../helpers";
+
 // swr library
 import useSWR from "swr";
 
 function Signup(props) {
+  let en = passwordEncode("123456");
+  let de = passwordDecode(en);
+  console.log(en);
+  console.log(de);
   const { data } = useSWR(`${apiURL}/items/department`);
   const [newData, setData] = useState({});
   const [saving, setSaving] = useState(false);
@@ -27,8 +34,11 @@ function Signup(props) {
   }
 
   function handleInputChange(e) {
-    // console.log(e.persist());
     let { name, value } = e.target;
+    // console.log(e.persist());
+    if (e.target.name === "password") {
+      value = passwordEncode(value);
+    }
 
     setData((prev) => {
       return { ...prev, [name]: value };
@@ -48,6 +58,7 @@ function Signup(props) {
         }
       })
       .catch((err) => {
+        console.log(newData);
         setSaving(false);
         setMessage("Please Fill all fields with correct Data");
       });

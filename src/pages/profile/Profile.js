@@ -1,12 +1,36 @@
-import React from "react";
+import React, { useContext } from "react";
+import { navigate } from "@reach/router";
 import "../profile/profileStyle.scss";
 import Hero from "../../components/hero/Hero";
 import Input from "../../components/input/Input";
 import Select from "../../components/select/Select";
+
+//context
+
+import { userContext } from "../../context/userContext";
+
 function Profile() {
+  const userState = useContext(userContext);
+
+  // authenticate user
+
+  if (!userState.userState.isLoggedIn && !sessionStorage.getItem("userData")) {
+    navigate("/login");
+    return null;
+  }
+
+  console.log(userState.userState);
+  const userData =
+    userState.userState?.userData ||
+    JSON.parse(sessionStorage.getItem("userData"));
+
   return (
     <section className="profile">
-      <Hero title="User Profile" />
+      <Hero
+        title={`${userData?.firstname || "User Profile"} ${
+          userData?.lastname || ""
+        }`}
+      />
       <div className="profile_content mx-auto p-5">
         <div className="profile_content_left p-3 ">
           <figure className="mx-auto">

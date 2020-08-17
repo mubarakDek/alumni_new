@@ -13,3 +13,13 @@ export function isDatePassed(date) {
 function isValidDate(d) {
   return d instanceof Date && !isNaN(d);
 }
+
+// password
+
+export function passwordEncode(text) {
+  return text;
+}
+
+export function passwordDecode(hash) {
+  return hash;
+}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { navigate } from "@reach/router";
 
 import { Link } from "@reach/router";
@@ -9,8 +9,17 @@ import axios from "axios";
 // api url
 import { apiURL } from "../../globals";
 
+//password decrption
+import { passwordDecode } from "../../helpers";
+
+//context
+
+import { userContext } from "../../context/userContext";
+
 function Login() {
   const [user, setUser] = useState({});
+  const [message, setMessage] = useState("");
+  const context = useContext(userContext);
 
   function handleInputChange(e) {
     // console.log(e.persist());
@@ -27,12 +36,29 @@ function Login() {
     console.log(user);
 
     axios
-      .post(`${apiURL}/auth/authenticate`, user)
+      .get(`${apiURL}/items/member`)
       .then(function (res) {
-        console.log(res);
-        if (res.status === 200) {
-          navigate("/profile");
-        }
+        res.data.data.forEach((obj) => {
+          // check if email exists in database
+          passwordDecode(obj.password);
+          if (
+            passwordDecode(obj.password) === user.password &&
+            user.email === obj.email
+          ) {
+            //set user context
+            context.setUserState({
+              isLoggedIn: true,
+              userData: obj,
+            });
+
+            // store the loggedIn user to sessionStorage.
+            sessionStorage.setItem("userData", JSON.stringify(obj));
+
+            navigate("/profile");
+          } else {
+            setMessage("Invalid Credentials");
+          }
+        });
       })
       .catch((err) => {
         console.log(err);
@@ -45,6 +71,7 @@ function Login() {
         <SectionTitle title="Login" />
 
         <div className="content_wrap">
+          <h3 style={{ color: "red" }}>{message}</h3>
           <form className="form" onSubmit={handleSubmit}>
             <div className="form_group">
               <Input
