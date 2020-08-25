@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "@reach/router";
 import AccountDropdown from "./accountDropdown/Account";
+import { UserContext } from "../context/userContext";
 
 function Navbar() {
+  const { state } = useContext(UserContext);
   let [isLoggedIn, setIsloggedIn] = useState(false);
 
   const handleToggle = () => {
@@ -54,10 +56,15 @@ function Navbar() {
           <Link className="menu_link" to="/contact">
             Contact
           </Link>
-          <Link className="btn menu_link" to="/login">
-            Login
-          </Link>
-          {isLoggedIn ? <AccountDropdown className="user" /> : null}
+          {!state.isLoggedIn && !window.sessionStorage.getItem("userData") && (
+            <Link className="btn menu_link" to="/login">
+              Login
+            </Link>
+          )}
+
+          {(state.isLoggedIn || sessionStorage.getItem("userData")) && (
+            <AccountDropdown className="user" />
+          )}
         </ul>
         <div onClick={handleToggle} className="toggle fontawesome-list"></div>
       </div>

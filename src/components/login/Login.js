@@ -14,12 +14,12 @@ import { passwordDecode } from "../../helpers";
 
 //context
 
-import { userContext } from "../../context/userContext";
+import { UserContext } from "../../context/userContext";
 
 function Login() {
-  const [user, setUser] = useState({});
+  const { state, dispatch } = useContext(UserContext);
   const [message, setMessage] = useState("");
-  const context = useContext(userContext);
+  const [user, setUser] = useState({});
 
   function handleInputChange(e) {
     // console.log(e.persist());
@@ -45,15 +45,7 @@ function Login() {
             passwordDecode(obj.password) === user.password &&
             user.email === obj.email
           ) {
-            //set user context
-            context.setUserState({
-              isLoggedIn: true,
-              userData: obj,
-            });
-
-            // store the loggedIn user to sessionStorage.
-            sessionStorage.setItem("userData", JSON.stringify(obj));
-
+            dispatch({ type: "LOGIN", payload: obj });
             navigate("/profile");
           } else {
             setMessage("Invalid Credentials");

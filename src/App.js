@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Router } from "@reach/router";
 import About from "./pages/about/About";
 import Home from "./pages/Home";
@@ -16,17 +16,12 @@ import Profile from "./pages/profile/Profile";
 import SingleNews from "./pages/singleNews/SingleNews";
 
 //context
-import { userContext } from "./context/userContext";
+import UserContextProver from "./context/userContext";
 
 function App() {
-  let [userState, setUserState] = useState({
-    loggedInUser: "",
-    isLoggedIn: false,
-  });
-
   return (
     <>
-      <userContext.Provider value={{ userState, setUserState }}>
+      <UserContextProver>
         <Navbar />
         <Router>
           <Home path="/" />
@@ -42,7 +37,7 @@ function App() {
           <Profile path="profile" />
           <SingleNews path="singleNews/:id/:imgId" />
         </Router>
-      </userContext.Provider>
+      </UserContextProver>
       <Footer />
     </>
   );

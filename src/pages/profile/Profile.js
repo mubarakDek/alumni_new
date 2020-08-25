@@ -7,22 +7,23 @@ import Select from "../../components/select/Select";
 
 //context
 
-import { userContext } from "../../context/userContext";
+import { UserContext } from "../../context/userContext";
 
 function Profile() {
-  const userState = useContext(userContext);
+  const { state } = useContext(UserContext);
 
   // authenticate user
 
-  if (!userState.userState.isLoggedIn && !sessionStorage.getItem("userData")) {
+  if (!state.isLoggedIn && !sessionStorage.getItem("userData")) {
     navigate("/login");
     return null;
   }
 
-  console.log(userState.userState);
-  const userData =
-    userState.userState?.userData ||
-    JSON.parse(sessionStorage.getItem("userData"));
+  console.log(state);
+
+  const userData = state.isLoggedIn
+    ? state
+    : JSON.parse(sessionStorage.getItem("userData"));
 
   return (
     <section className="profile">

@@ -1,9 +1,12 @@
-import React, { useState } from "react";
-import { Link } from "@reach/router";
+import React, { useState, useContext } from "react";
+import { Link, navigate } from "@reach/router";
 import "../../components/accountDropdown/accountStyle.scss";
 import Input from "../input/Input";
+import { UserContext } from "../../context/userContext";
 
 function AccountDropdown() {
+  const { dispatch } = useContext(UserContext);
+
   const [active, setActive] = useState(true);
   const [popup, setPopup] = useState(true);
 
@@ -25,7 +28,7 @@ function AccountDropdown() {
             Change Password
           </Link>
           <Link to="/profile">Account Settings</Link>
-          <Link to="/login">Logout</Link>
+          <button onClick={() => dispatch({ type: "LOGOUT" })}>Logout</button>
         </div>
       </div>
 

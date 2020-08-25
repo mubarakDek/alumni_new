@@ -1,11 +1,56 @@
-import React from "react";
+import React, { useReducer } from "react";
 
-const userContext = React.createContext({
-  loggedInUser: "",
-  isLoggedIn: false,
-  userDat: {},
-}); // Create a context object
+const reducer = (state, action) => {
+  let newState;
 
-export {
-  userContext, // Export it so it can be used by other Components
+  switch (action.type) {
+    case "LOGIN":
+      newState = { ...state, isLoggedIn: true, ...action.payload };
+      // save state to SessionStroge
+      sessionStorage.setItem("userData", JSON.stringify(newState));
+      //navigate to profile
+      // return state
+      return newState;
+
+      break;
+
+    case "LOGOUT":
+      // set login to false
+      newState = { ...state, isLoggedIn: false };
+      // remove state from SessionStroge
+      sessionStorage.removeItem("userData");
+      //navigate to profile
+      // return state
+      return newState;
+
+      break;
+    case "ENABLE-DARK-MODE":
+      newState = { ...state, isLoggedIn: false };
+      return state;
+      break;
+    case "DISABLE-DARK-MODE":
+      newState = { ...state, isLoggedIn: false };
+      return state;
+      break;
+    default:
+      return state;
+  }
 };
+
+const initialState = {
+  isLoggedIn: false,
+};
+
+const UserContext = React.createContext();
+
+export default function MyContext({ children }) {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  return (
+    <UserContext.Provider value={{ state, dispatch }}>
+      {children}
+    </UserContext.Provider>
+  );
+}
+
+export { UserContext };
