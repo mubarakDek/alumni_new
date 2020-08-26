@@ -1,0 +1,118 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* =======================
+  ACCOUNT DROPDOWN
+=========================*/
+.account {
+  position: relative;
+  z-index: 11;
+  display: inline-block;
+  margin-top: 0.4rem;
+}
+.account .img_container {
+  height: 2.6rem;
+  width: 2.6rem;
+  border-radius: 100px;
+  overflow: hidden;
+  border: 1px solid transparent;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.account .img_container img {
+  width: 100%;
+  height: 100%;
+}
+.account .img_container:hover {
+  border: 1px solid #fff;
+}
+.account_content {
+  position: absolute;
+  right: 0;
+  margin-top: 0.5rem;
+  background-color: #fff;
+  width: 10rem;
+  font-size: 0.9rem;
+  border-radius: 4px;
+  padding: 0.5rem 0;
+}
+@media only screen and (max-width: 768px) {
+  .account_content {
+    left: 0;
+  }
+}
+.account_content a {
+  color: #424242;
+  padding: 0.5rem 0.75rem;
+}
+.account_content a:hover {
+  background-color: #2699fb;
+  color: #fff;
+}
+.account_content button {
+  background-color: #fff;
+  width: 100%;
+  text-align: left;
+  border: none;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  color: #424242;
+}
+.account_content button:hover {
+  background-color: #2699fb;
+  cursor: pointer;
+  color: #fff;
+}
+.account .active .account_content {
+  display: block;
+}
+
+/* =======================
+  POPUP - CHANGE PASSWORD
+=========================*/
+.popup {
+  min-width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background-color: #1f1d1dea;
+  z-index: 9999;
+}
+.popup_content {
+  min-width: 30rem;
+  padding: 3rem 4rem;
+  margin-top: 3rem;
+  box-shadow: 0 1rem 4rem rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  border-radius: 4px;
+  position: relative;
+}
+.popup_changePass {
+  transition: all 0.3s;
+}
+.popup_close {
+  color: #424242;
+  position: absolute;
+  top: 0.1rem;
+  right: 1.3rem;
+  font-size: 2rem;
+  text-decoration: none;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.popup_close:hover {
+  color: #cf0000;
+}
+
+.popup.active {
+  opacity: 1;
+  visibility: visible;
+}
