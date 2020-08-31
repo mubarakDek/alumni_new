@@ -17,7 +17,7 @@ import { passwordDecode } from "../../helpers";
 import { UserContext } from "../../context/userContext";
 
 function Login() {
-  const { state, dispatch } = useContext(UserContext);
+  const { dispatch } = useContext(UserContext);
   const [message, setMessage] = useState("");
   const [user, setUser] = useState({});
 
@@ -38,19 +38,28 @@ function Login() {
     axios
       .get(`${apiURL}/items/member`)
       .then(function (res) {
-        res.data.data.forEach((obj) => {
+        for (let obj of res.data.data) {
           // check if email exists in database
           passwordDecode(obj.password);
-          if (
-            passwordDecode(obj.password) === user.password &&
-            user.email === obj.email
-          ) {
-            dispatch({ type: "LOGIN", payload: obj });
-            navigate("/profile");
+
+          if (user.email === obj.email) {
+            if (obj.status === false) {
+              console.log("inactive");
+              setMessage("Your Account is not active");
+              break;
+            }
+
+            if (passwordDecode(obj.password) === user.password) {
+              dispatch({ type: "LOGIN", payload: obj });
+              navigate("/profile");
+              break;
+            } else {
+              setMessage("Invalid Credentials");
+            }
           } else {
-            setMessage("Invalid Credentials");
+            setMessage("Invalid Credentials!!");
           }
-        });
+        }
       })
       .catch((err) => {
         console.log(err);

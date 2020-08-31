@@ -1,16 +1,42 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { navigate } from "@reach/router";
 import "../profile/profileStyle.scss";
 import Hero from "../../components/hero/Hero";
 import Input from "../../components/input/Input";
 import Select from "../../components/select/Select";
 
+import axios from "axios";
+// api url
+import { apiURL } from "../../globals";
 //context
 
 import { UserContext } from "../../context/userContext";
 
 function Profile() {
+  const [bio, setBio] = useState({});
+  const [message, setMessage] = useState("");
+  const [memberDetails, setMemberDetails] = useState([]);
   const { state } = useContext(UserContext);
+
+  // get member details
+
+  React.useEffect(
+    () =>
+      async function getData() {
+        let response = await axios.get(`${apiURL}/items/memberdetail`);
+        let details = response?.data?.data;
+        for (let detail of details) {
+          if (detail.memberid === state.id) {
+            setMemberDetails(detail);
+          }
+        }
+        getData();
+
+        console.log(memberDetails);
+        console.log(localStorage.getItem("userData"));
+      },
+    []
+  );
 
   // authenticate user
 
@@ -19,27 +45,121 @@ function Profile() {
     return null;
   }
 
-  console.log(state);
-
   const userData = state.isLoggedIn
     ? state
     : JSON.parse(sessionStorage.getItem("userData"));
 
+  let title = `${userData?.firstname || "User Profile"} ${
+    userData?.lastname || ""
+  }`;
+
+  async function handleBioSubmit(e) {
+    e.preventDefault();
+
+    let bioExists = false;
+    let detailsId = null;
+
+    // fetch all member details
+    let response = await axios.get(`${apiURL}/items/memberdetail`);
+    let details = response?.data?.data;
+
+    for (let detail of details) {
+      if (detail.memberid === userData.id) {
+        bioExists = true;
+        detailsId = detail.id;
+        break;
+      }
+    }
+
+    // data to store
+
+    let data = {
+      ...bio,
+      memberid: userData.id,
+      photo: null,
+    };
+
+    // if details already exist update it.a1
+    if (bioExists) {
+      axios
+        .patch(`${apiURL}/items/memberdetail/${detailsId}`, data)
+        .then(function (res) {
+          if (res.status === 200) {
+            setMessage("Successfully updated Bio Data.");
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+          setMessage("Please Fill all fields with correct Data to update.");
+        });
+
+      return;
+    }
+
+    axios
+      .post(`${apiURL}/items/memberdetail`, {
+        ...bio,
+        memberid: userData.id,
+        photo: null,
+      })
+      .then(function (res) {
+        if (res.status === 200) {
+          setMessage("Successfully Created Bio Data.");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        setMessage("Please Fill all fields with correct Data. ");
+      });
+  }
+
+  function handleInputChange(e) {
+    let { name, value } = e.target;
+
+    setBio((prev) => {
+      return { ...prev, [name]: value };
+    });
+  }
+
   return (
     <section className="profile">
-      <Hero
-        title={`${userData?.firstname || "User Profile"} ${
-          userData?.lastname || ""
-        }`}
-      />
+      <Hero title={title} />
+      <h2>{message}</h2>
       <div className="profile_content mx-auto p-5">
         <div className="profile_content_left p-3 ">
           <figure className="mx-auto">
             <img src="../../images/building.jpg" alt="" />
           </figure>
           <div className="short_bio">
-            <label htmlFor="">Short BIO</label>
-            <textarea rows="5" placeholder="Descripe who you are" />
+            <form onSubmit={handleBioSubmit}>
+              <label htmlFor="bio">Short BIO</label>
+              <textarea
+                name="bio"
+                id="bio"
+                onChange={handleInputChange}
+                rows="5"
+                placeholder="Descripe who you are"
+              />
+              <Input
+                label="Nickname"
+                id="nickname"
+                name="nickname"
+                type="text"
+                onChange={handleInputChange}
+                placeholder="your nickname"
+              />
+              <Input
+                label="City"
+                id="city"
+                name="city"
+                type="text"
+                onChange={handleInputChange}
+                placeholder="your city"
+              />
+              <button className="btn-primary ml-auto mt-4 px-5" type="submit">
+                update
+              </button>
+            </form>
           </div>
         </div>
         <div className="profile_content_right">

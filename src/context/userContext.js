@@ -12,8 +12,6 @@ const reducer = (state, action) => {
       // return state
       return newState;
 
-      break;
-
     case "LOGOUT":
       // set login to false
       newState = { ...state, isLoggedIn: false };
@@ -23,15 +21,14 @@ const reducer = (state, action) => {
       // return state
       return newState;
 
-      break;
     case "ENABLE-DARK-MODE":
       newState = { ...state, isLoggedIn: false };
       return state;
-      break;
+
     case "DISABLE-DARK-MODE":
       newState = { ...state, isLoggedIn: false };
       return state;
-      break;
+
     default:
       return state;
   }

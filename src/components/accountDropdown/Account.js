@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Link, navigate } from "@reach/router";
+import { Link } from "@reach/router";
 import "../../components/accountDropdown/accountStyle.scss";
 import Input from "../input/Input";
 import { UserContext } from "../../context/userContext";

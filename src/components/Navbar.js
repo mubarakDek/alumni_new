@@ -5,7 +5,7 @@ import { UserContext } from "../context/userContext";
 
 function Navbar() {
   const { state } = useContext(UserContext);
-  let [isLoggedIn, setIsloggedIn] = useState(false);
+  let [, setIsloggedIn] = useState(false);
 
   const handleToggle = () => {
     const menu = document.querySelector(".menu");
