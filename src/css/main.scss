@@ -1,4 +1,5 @@
 @import url(https://weloveiconfonts.com/api/?family=fontawesome);
+
 [class*="fontawesome-"]::before {
   font-family: "FontAwesome", sans-serif;
   display: inline;
@@ -104,7 +105,7 @@ nav {
       .dropdown {
         position: relative;
 
-        &:hover > .sub-menu {
+        &:hover>.sub-menu {
           z-index: 10;
           display: block;
           transition: all 0.3s;
@@ -203,6 +204,7 @@ nav {
         font-size: 3rem;
         margin-bottom: 0.5rem;
       }
+
       h3 {
         font-size: 1.4rem;
       }
@@ -231,6 +233,7 @@ nav {
     & .tweet {
       border: 1px solid $color-tertiary;
     }
+
     & .tweet_twitter {
       margin-bottom: 2rem;
     }
@@ -277,8 +280,12 @@ nav {
   &_figure {
     display: block;
     width: 100%;
-    max-height: 18%;
     overflow: hidden;
+    border: 1px solid red;
+
+    & img {
+      width: 100%;
+    }
   }
 
   &_date {
@@ -300,6 +307,11 @@ nav {
       max-width: 12rem;
       max-height: 8rem;
       margin-bottom: 0.3em;
+
+      & img {
+        height: 100%;
+        width: 100%;
+      }
     }
   }
 
@@ -308,14 +320,18 @@ nav {
 
     &_figure {
       min-width: 100%;
-      min-height: 15rem;
+      min-height: 13rem;
       margin-bottom: 0.5rem;
     }
   }
 
   @media only screen and (min-width: 850px) {
     &_figure {
-      min-height: 20rem;
+      min-height: 18rem;
+
+      & img {
+        min-height: 100%;
+      }
     }
   }
 }
@@ -344,6 +360,7 @@ nav {
       text-align: center;
       line-height: 1;
       letter-spacing: 2px;
+
       span {
         display: block;
         font-size: 3rem;
@@ -390,10 +407,12 @@ footer {
 
     &_logo {
       margin-right: 1rem;
+
       img {
         height: 3rem;
         margin-bottom: 1rem;
       }
+
       @media only screen and (max-width: 800px) {
         display: none;
       }
@@ -402,6 +421,7 @@ footer {
     &_nav {
       margin-right: 1rem;
       margin-bottom: 2rem;
+
       a {
         padding-right: 0.5rem;
         color: inherit;
@@ -500,6 +520,7 @@ footer {
   background-color: $color-primary;
   color: $color-white;
 }
+
 .btn-primary:hover,
 .btn-primary:active {
   background-color: $color-white;
@@ -513,6 +534,7 @@ footer {
   color: $color-primary;
   border: 1px solid $color-primary;
 }
+
 .btn-primary-outline:hover,
 .btn-primary-outline:active {
   background-color: $color-primary;
@@ -524,6 +546,7 @@ footer {
   background-color: $color-secondary;
   color: $color-white;
 }
+
 .btn-secondary:hover,
 .btn-secondary:active {
   background-color: $color-white;
@@ -537,6 +560,7 @@ footer {
   color: $color-secondary;
   border: 1px solid $color-secondary;
 }
+
 .btn-secondary-outline:hover,
 .btn-secondary-outline:active {
   background-color: $color-secondary;

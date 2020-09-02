@@ -24,7 +24,6 @@ function Events() {
 
   if (data) {
     const { data: event } = data;
-    console.log(event);
 
     return (
       <section className="events">
