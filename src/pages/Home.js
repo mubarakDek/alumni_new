@@ -6,68 +6,101 @@ import Event from "../components/Event";
 import GoogleMap from "../components/GoogleMap";
 import SectionTitle from "../components/SectionTitle";
 import { Link } from "@reach/router";
+import { isDatePassed } from "../helpers/index";
+
+// api url
+import { apiURL } from "../globals";
+
+// swr library
+import useSWR from "swr";
 
 function Home() {
-  return (
-    <div className="container">
-      <HomeHero />
+  const { data, error } = useSWR(`${apiURL}/items/news`);
 
-      <section className="main_content">
-        {/* ==== NEWS SECTION ===== */}
-        <div className="main_content_news">
-          <h1 className="main_content_title">Alumni News</h1>
-          <News />
-          <News />
-        </div>
+  if (error) {
+    return (
+      <div style={{ height: "40vh", textAlign: "center" }}>
+        <h3>something went wrong, please reload the page</h3>;
+      </div>
+    );
+  }
 
-        {/* ==== TWEETS SECTION ===== */}
-        <div className="main_content_tweets">
-          <h2 className="main_content_title">Social Media</h2>
-          <div className="tweet tweet_twitter">
-            <Timeline
-              dataSource={{
-                sourceType: "profile",
-                screenName: "AdmasUniversit1",
-              }}
-              options={{
-                height: "400",
-              }}
-            />
+  if (data) {
+    const { data: news } = data;
+
+    return (
+      <div className="container">
+        <HomeHero />
+
+        <section className="main_content">
+          {/* ==== NEWS SECTION ===== */}
+          <div className="main_content_news">
+            <h1 className="main_content_title">Alumni News</h1>
+            {news.map((post) => {
+              return (
+                <div key={post.id}>
+                  <News
+                    title={post.title}
+                    createOn={post.created_on}
+                    imgId={post.photo}
+                    newsId={post.id}
+                  />
+                </div>
+              );
+            })}
           </div>
-          <div className="tweet tweet_facebook">
-            <Timeline
-              dataSource={{
-                sourceType: "profile",
-                screenName: "AdmasUniversit1",
-              }}
-              options={{
-                height: "400",
-              }}
-            />
-            {/* <FacebookProvider appId="868100766567482">
+
+          {/* ==== TWEETS SECTION ===== */}
+          <div className="main_content_tweets">
+            <h2 className="main_content_title">Social Media</h2>
+            <div className="tweet tweet_twitter">
+              <Timeline
+                dataSource={{
+                  sourceType: "profile",
+                  screenName: "AdmasUniversit1",
+                }}
+                options={{
+                  height: "400",
+                }}
+              />
+            </div>
+            <div className="tweet tweet_facebook">
+              <Timeline
+                dataSource={{
+                  sourceType: "profile",
+                  screenName: "AdmasUniversit1",
+                }}
+                options={{
+                  height: "400",
+                }}
+              />
+              {/* <FacebookProvider appId="868100766567482">
               <Page href="https://www.facebook.com" tabs="timeline" />
             </FacebookProvider> */}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="upcoming_events mx-auto p-5">
-        <SectionTitle title="Upcoming events" />
-        <div className="upcoming_events_list">
-          <Event />
-          <Event />
-          <Event />
-        </div>
-        <Link to="/events" className="btn-primary mx-auto">
-          Load More
-        </Link>
-      </section>
+        <section className="upcoming_events mx-auto p-5">
+          <SectionTitle title="Upcoming events" />
+          <div className="upcoming_events_list">
+            <Event />
+            <Event />
+            <Event />
+          </div>
+          <Link to="/events" className="btn-primary mx-auto">
+            Load More
+          </Link>
+        </section>
 
-      <section className="google_map">
-        <GoogleMap />
-      </section>
-    </div>
-  );
+        <section className="google_map">
+          <GoogleMap />
+        </section>
+      </div>
+    );
+  }
+
+  return null;
 }
 
 export default Home;
