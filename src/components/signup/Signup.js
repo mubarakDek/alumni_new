@@ -35,6 +35,8 @@ function Signup(props) {
 
   function handleInputChange(e) {
     let { name, value } = e.target;
+
+    console.log(name, value);
     // console.log(e.persist());
     if (e.target.name === "password") {
       value = passwordEncode(value);
@@ -130,9 +132,11 @@ function Signup(props) {
                   name="degree"
                   onChange={(e) => handleInputChange(e)}
                 >
-                  <option defaultValue="Bachelor Degree">
-                    Bachelor Degree
+                  <option style={{ background: "#ccc" }} defaultValue="">
+                    Select Degree
                   </option>
+
+                  <option value="Bachelor Degree">Bachelor Degree</option>
                   <option value="Masters Degree">Masters Degree</option>
                 </Select>
               </div>

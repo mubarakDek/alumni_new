@@ -15,28 +15,25 @@ import { UserContext } from "../../context/userContext";
 function Profile() {
   const [bio, setBio] = useState({});
   const [message, setMessage] = useState("");
-  const [memberDetails, setMemberDetails] = useState([]);
+  // const [memberDetails, setMemberDetails] = useState({});
   const { state } = useContext(UserContext);
 
   // get member details
 
-  React.useEffect(
-    () =>
-      async function getData() {
-        let response = await axios.get(`${apiURL}/items/memberdetail`);
-        let details = response?.data?.data;
-        for (let detail of details) {
-          if (detail.memberid === state.id) {
-            setMemberDetails(detail);
-          }
+  React.useEffect(() => {
+    let memberId = JSON.parse(sessionStorage.getItem("userData"))?.id || null;
+    async function getData() {
+      let response = await axios.get(`${apiURL}/items/memberdetail`);
+      let details = response?.data?.data;
+      for (let detail of details) {
+        if (detail.memberid === memberId) {
+          setBio({ ...detail });
         }
-        getData();
+      }
+    }
 
-        console.log(memberDetails);
-        console.log(localStorage.getItem("userData"));
-      },
-    []
-  );
+    getData();
+  }, []);
 
   // authenticate user
 
@@ -136,6 +133,7 @@ function Profile() {
               <textarea
                 name="bio"
                 id="bio"
+                value={bio.bio || ""}
                 onChange={handleInputChange}
                 rows="5"
                 placeholder="Descripe who you are"
@@ -144,6 +142,7 @@ function Profile() {
                 label="Nickname"
                 id="nickname"
                 name="nickname"
+                value={bio.nickname || ""}
                 type="text"
                 onChange={handleInputChange}
                 placeholder="your nickname"
@@ -151,6 +150,7 @@ function Profile() {
               <Input
                 label="City"
                 id="city"
+                value={bio.city || ""}
                 name="city"
                 type="text"
                 onChange={handleInputChange}
