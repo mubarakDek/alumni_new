@@ -16,6 +16,9 @@ import useSWR from "swr";
 
 function Home() {
   const { data, error } = useSWR(`${apiURL}/items/news`);
+  const { data: eventData, error: eventError } = useSWR(
+    `${apiURL}/items/event`
+  );
 
   if (error) {
     return (
@@ -25,8 +28,9 @@ function Home() {
     );
   }
 
-  if (data) {
+  if (data && eventData) {
     const { data: news } = data;
+    const { data: events } = eventData;
 
     return (
       <div className="container">
@@ -84,9 +88,20 @@ function Home() {
         <section className="upcoming_events mx-auto p-5">
           <SectionTitle title="Upcoming events" />
           <div className="upcoming_events_list">
-            <Event />
-            <Event />
-            <Event />
+            {events
+              .filter((e) => !isDatePassed(e.date))
+              .map((post) => {
+                return (
+                  <div key={post.id} className="events_upcoming_list_item">
+                    <Event
+                      title={post.description}
+                      createOn={post.created_on}
+                      eventId={post.id}
+                      date={post.date}
+                    />
+                  </div>
+                );
+              })}
           </div>
           <Link to="/events" className="btn-primary mx-auto">
             Load More
