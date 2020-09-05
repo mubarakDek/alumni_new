@@ -98,6 +98,7 @@ function Home() {
                       createOn={post.created_on}
                       eventId={post.id}
                       date={post.date}
+                      imgId={post.banner}
                     />
                   </div>
                 );

@@ -22,7 +22,7 @@ function SingleNews({ id, imgId }) {
 
   if (data) {
     const news = data.data;
-    console.log(news);
+
     return (
       <section className="singleNews">
         <Hero title="News Page" />
