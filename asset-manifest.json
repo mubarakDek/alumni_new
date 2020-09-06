@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/alumni_new/static/css/main.d358ec6c.chunk.css",
+    "main.js": "/alumni_new/static/js/main.dbf810e6.chunk.js",
+    "main.js.map": "/alumni_new/static/js/main.dbf810e6.chunk.js.map",
+    "runtime-main.js": "/alumni_new/static/js/runtime-main.ea797859.js",
+    "runtime-main.js.map": "/alumni_new/static/js/runtime-main.ea797859.js.map",
+    "static/js/2.56ff0696.chunk.js": "/alumni_new/static/js/2.56ff0696.chunk.js",
+    "static/js/2.56ff0696.chunk.js.map": "/alumni_new/static/js/2.56ff0696.chunk.js.map",
+    "index.html": "/alumni_new/index.html",
+    "precache-manifest.f799c9f2109d721459ea5827a721c870.js": "/alumni_new/precache-manifest.f799c9f2109d721459ea5827a721c870.js",
+    "service-worker.js": "/alumni_new/service-worker.js",
+    "static/css/main.d358ec6c.chunk.css.map": "/alumni_new/static/css/main.d358ec6c.chunk.css.map",
+    "static/js/2.56ff0696.chunk.js.LICENSE.txt": "/alumni_new/static/js/2.56ff0696.chunk.js.LICENSE.txt",
+    "static/media/main.scss": "/alumni_new/static/media/building.3741c04b.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ea797859.js",
+    "static/js/2.56ff0696.chunk.js",
+    "static/css/main.d358ec6c.chunk.css",
+    "static/js/main.dbf810e6.chunk.js"
+  ]
+}
