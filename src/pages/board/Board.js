@@ -44,7 +44,7 @@ function Board() {
           </p>
           <div className="board_content_list">
             {member
-              .filter((e) => e.group == "board")
+              .filter((e) => e.group === "board")
               .map((post) => {
                 return (
                   <div key={post.id} className="board_content_list_item">

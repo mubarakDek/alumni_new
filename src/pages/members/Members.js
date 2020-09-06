@@ -23,6 +23,7 @@ function Members() {
 
   if (data) {
     const { data: member } = data;
+    console.log(member);
 
     return (
       <section className="members">
@@ -47,7 +48,7 @@ function Members() {
                     <Member
                       fname={post.firstname}
                       lname={post.lastname}
-                      imgId={post.photo}
+                      imgId={post.photo || ""}
                       degree={post.degree}
                     />
                   </div>

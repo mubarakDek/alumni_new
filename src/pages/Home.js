@@ -16,9 +16,7 @@ import useSWR from "swr";
 
 function Home() {
   const { data, error } = useSWR(`${apiURL}/items/news`);
-  const { data: eventData, error: eventError } = useSWR(
-    `${apiURL}/items/event`
-  );
+  const { data: eventData } = useSWR(`${apiURL}/items/event`);
 
   if (error) {
     return (
