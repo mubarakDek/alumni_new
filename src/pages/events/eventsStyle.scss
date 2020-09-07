@@ -33,6 +33,7 @@ EVENTS PAGE
       &_item {
         width: 100%;
       }
+
       @media only screen and (min-width: 768px) {
         display: flex;
         flex-wrap: wrap;
@@ -65,9 +66,11 @@ EVENTS PAGE
       input {
         width: 70%;
       }
+
       select {
         min-width: auto;
         margin-left: 1rem;
+
         @media only screen and (min-width: 768px) {
           flex: 0 0 10rem;
           margin-left: 0;

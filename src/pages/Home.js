@@ -20,8 +20,13 @@ function Home() {
 
   if (error) {
     return (
-      <div style={{ height: "40vh", textAlign: "center" }}>
-        <h3>something went wrong, please reload the page</h3>;
+      <div
+        className="error_reload_page"
+        style={{ height: "70vh", textAlign: "center" }}
+      >
+        <h3>
+          Something went wrong <br /> please reload page
+        </h3>
       </div>
     );
   }

@@ -32,8 +32,6 @@ function Signup(props) {
   function handleInputChange(e) {
     let { name, value } = e.target;
 
-    console.log(name, value);
-    // console.log(e.persist());
     if (e.target.name === "password") {
       value = passwordEncode(value);
     }
@@ -56,7 +54,6 @@ function Signup(props) {
         }
       })
       .catch((err) => {
-        console.log(newData);
         setSaving(false);
         setMessage("Please Fill all fields with correct Data");
       });
@@ -67,7 +64,10 @@ function Signup(props) {
       <div className="signup_content mx-auto p-5">
         <SectionTitle title="Sign up" />
         <div className="signup_content_wrap py-5">
-          <div style={{ color: "red", background: "#f0c0bc", width: "100%" }}>
+          <div
+            className="errorMessage"
+            style={{ color: "red", background: "#f0c0bc", width: "100%" }}
+          >
             <h3>{message}</h3>
           </div>
 
@@ -85,7 +85,7 @@ function Signup(props) {
                   onChange={handleInputChange}
                 />
                 <Input
-                  label="Last Name"
+                  label="Last Name *"
                   type="text"
                   name="lastname"
                   placeholder="Last Name"
@@ -138,7 +138,7 @@ function Signup(props) {
               </div>
               <div className="form_group">
                 <Input
-                  label="Year"
+                  label="Year *"
                   type="date"
                   name="year"
                   placeholder="Year"
@@ -150,16 +150,18 @@ function Signup(props) {
                   type="password"
                   name="password"
                   placeholder="Password"
+                  required
                   onChange={(e) => handleInputChange(e)}
                 />
               </div>
-              <div className="form_group">
+              <div className="form_group radio">
                 <Input
                   type="radio"
                   label="Male"
                   id="male"
                   name="gender"
                   value="m"
+                  className="radio"
                   onChange={(e) => handleInputChange(e)}
                 />
 
@@ -169,6 +171,7 @@ function Signup(props) {
                   label="Female"
                   name="gender"
                   value="f"
+                  className="radio"
                   onChange={(e) => handleInputChange(e)}
                 />
               </div>

@@ -23,8 +23,6 @@ function SingleEvent({ id, imgId }) {
   if (data) {
     const event = data.data;
 
-    console.log(event);
-
     return (
       <section className="singleNews">
         <Hero title="Event Page" />
