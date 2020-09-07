@@ -21,7 +21,7 @@ function Events() {
         style={{ height: "70vh", textAlign: "center" }}
       >
         <h3>
-          something went wrong, <br /> please reload page
+          something went wrong, <br /> please reload the page
         </h3>
       </div>
     );

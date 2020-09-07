@@ -25,7 +25,7 @@ function Home() {
         style={{ height: "70vh", textAlign: "center" }}
       >
         <h3>
-          Something went wrong <br /> please reload page
+          Something went wrong <br /> please reload the page
         </h3>
       </div>
     );

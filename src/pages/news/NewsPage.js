@@ -15,7 +15,7 @@ function NewsPage() {
   if (error) {
     return (
       <div style={{ height: "40vh", textAlign: "center" }}>
-        <h3>something wenet wrong, please reload page</h3>;
+        <h3>something wenet wrong, please reload the page</h3>;
       </div>
     );
   }
