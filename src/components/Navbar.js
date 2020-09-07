@@ -22,7 +22,7 @@ function Navbar() {
     <nav className="nav">
       <div className="main-navigation">
         <div className="brand">
-          <img className="logo" src="./images/logo.png" alt="logo" />
+          <img className="logo" src="./images/logo.png" alt="University logo" />
         </div>
         <ul className="menu active">
           <Link className="menu_link" to="/">
