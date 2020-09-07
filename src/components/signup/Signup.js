@@ -18,10 +18,6 @@ import { passwordEncode, passwordDecode } from "../../helpers";
 import useSWR from "swr";
 
 function Signup(props) {
-  let en = passwordEncode("123456");
-  let de = passwordDecode(en);
-  console.log(en);
-  console.log(de);
   const { data } = useSWR(`${apiURL}/items/department`);
   const [newData, setData] = useState({});
   const [saving, setSaving] = useState(false);
