@@ -12,7 +12,7 @@ import useSWR from "swr";
 
 function Members() {
   const { data, error } = useSWR(`${apiURL}/items/member`);
-  const { data: mdetail } = useSWR(`${apiURL}/items/memberdetail`);
+  const { data: detail } = useSWR(`${apiURL}/items/memberdetail`);
 
   if (error) {
     return (
@@ -27,11 +27,13 @@ function Members() {
     );
   }
 
-  if (data) {
+  if (data && detail) {
     const { data: member } = data;
-    const { data: memberdetail } = mdetail;
-    console.log(member);
-    console.log(memberdetail);
+    const { data: memberdetail } = detail;
+    const [...mem] = memberdetail;
+    const [m] = mem;
+
+    console.log(m);
 
     return (
       <section className="members">
@@ -56,7 +58,7 @@ function Members() {
                     <Member
                       fname={post.firstname}
                       lname={post.lastname}
-                      imgId={post.id === memberdetail.memberid ? post.id : ""}
+                      imgId={post.id === m.memberid ? m.photo : ""}
                       degree={post.degree}
                     />
                   </div>

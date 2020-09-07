@@ -10,6 +10,7 @@ import useSWR from "swr";
 
 function Board() {
   const { data, error } = useSWR(`${apiURL}/items/member`);
+  const { data: detail } = useSWR(`${apiURL}/items/memberdetail`);
 
   if (error) {
     return (
@@ -19,10 +20,11 @@ function Board() {
     );
   }
 
-  if (data) {
+  if (data && detail) {
     const { data: member } = data;
-
-    console.log(member);
+    const { data: memberdetail } = detail;
+    const [...mem] = memberdetail;
+    const [m] = mem;
 
     return (
       <section className="board">
@@ -44,14 +46,14 @@ function Board() {
           </p>
           <div className="board_content_list">
             {member
-              .filter((e) => e.group === "board")
+              .filter((e) => e.board === true)
               .map((post) => {
                 return (
                   <div key={post.id} className="board_content_list_item">
                     <BoardMember
                       fname={post.firstname}
                       lname={post.lastname}
-                      imgId={post.photo}
+                      imgId={post.id === m.memberid ? m.photo : ""}
                       degree={post.degree}
                       email={post.email}
                       department={post.department_id}
