@@ -33,8 +33,6 @@ function Login() {
   function handleSubmit(e) {
     e.preventDefault();
 
-    console.log(user);
-
     axios
       .get(`${apiURL}/items/member`)
       .then(function (res) {
@@ -44,7 +42,6 @@ function Login() {
 
           if (user.email === obj.email) {
             if (obj.status === false) {
-              console.log("inactive");
               setMessage("Your Account is not active");
               break;
             }
@@ -99,18 +96,6 @@ function Login() {
               <button className="btn-primary ml-auto px-4 mt-2">Login</button>
             </div>
           </form>
-
-          <div className="login_with my-5">
-            <div className="title mb-2">
-              <div className="line"></div>
-              <p>Or Login with</p>
-              <div className="line"></div>
-            </div>
-            <div className="social_links">
-              <span className="fontawesome-twitter mr-3"></span>
-              <span className="fontawesome-facebook"></span>
-            </div>
-          </div>
 
           <div className="create_account">
             <p>

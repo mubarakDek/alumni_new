@@ -35,9 +35,15 @@ LOGIN PAGE
       border-radius: 4px;
       background-color: $color-bluelight;
 
+      & h3 {
+        display: block;
+        visibility: visible;
+      }
+
+
+
       & .form {
-        &_input {
-        }
+        &_input {}
 
         &_options {
           display: flex;
@@ -61,47 +67,6 @@ LOGIN PAGE
         }
       }
 
-      & .login_with {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        .title {
-          display: flex;
-          align-items: center;
-
-          p {
-            font-size: 1rem;
-            margin: 0 1rem;
-            font-weight: 200;
-            letter-spacing: 2px;
-          }
-
-          .line {
-            height: 0.16rem;
-            width: 4rem;
-            background-color: rgba($color: #000000, $alpha: 0.4);
-          }
-        }
-
-        .social_links {
-          display: flex;
-
-          .fontawesome-twitter,
-          .fontawesome-facebook {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-width: 3rem;
-            min-height: 3rem;
-            border-radius: 100px;
-            background-color: $color-primary;
-            color: $color-white;
-            font-size: 1.2rem;
-          }
-        }
-      }
 
       & .create_account {
         text-align: center;
@@ -110,6 +75,7 @@ LOGIN PAGE
         font-size: 1rem;
         color: $color-blackLight;
         font-weight: 200;
+        margin-top: 5rem;
 
         a {
           display: inline-block;

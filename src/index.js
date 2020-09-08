@@ -6,15 +6,13 @@ import App from "./App";
 import { SWRConfig } from "swr";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <SWRConfig
-      value={{
-        refreshInterval: 3000,
-        fetcher: (...args) => fetch(...args).then((res) => res.json()),
-      }}
-    >
-      <App />
-    </SWRConfig>
-  </React.StrictMode>,
+  <SWRConfig
+    value={{
+      refreshInterval: 3000,
+      fetcher: (...args) => fetch(...args).then((res) => res.json()),
+    }}
+  >
+    <App />
+  </SWRConfig>,
   document.getElementById("root")
 );

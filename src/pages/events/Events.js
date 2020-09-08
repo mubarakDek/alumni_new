@@ -16,8 +16,13 @@ function Events() {
 
   if (error) {
     return (
-      <div style={{ height: "40vh", textAlign: "center" }}>
-        <h3>something wenet wrong, please reload page</h3>;
+      <div
+        className="error_reload_page"
+        style={{ height: "70vh", textAlign: "center" }}
+      >
+        <h3>
+          something went wrong, <br /> please reload the page
+        </h3>
       </div>
     );
   }

@@ -14,7 +14,8 @@ $color-white: #fff;
   padding: 0;
   box-sizing: border-box;
 }
-/* =======================
+
+/* ======================= 
   SIGN UP
   =========================*/
 .signup {
@@ -35,6 +36,19 @@ $color-white: #fff;
       align-items: center;
       background-color: $color-bluelight;
       padding: 2rem;
+
+      & .errorMessage {
+        margin-bottom: 1rem;
+        border-radius: 4px;
+
+        & h3 {
+          color: red;
+          font-weight: 200;
+          font-size: 1rem;
+          letter-spacing: 2px;
+          text-transform: capitalize;
+        }
+      }
 
       .form {
         display: flex;
@@ -70,14 +84,26 @@ $color-white: #fff;
           }
         }
 
+        & .radio {
+          display: flex;
+          flex-direction: row;
+
+          .input {
+            display: flex;
+            max-width: 50%;
+          }
+        }
+
         .btn {
           display: flex;
+
           .btn-primary {
             width: 100%;
           }
 
           @media only screen and (min-width: 768px) {
             padding: 0 2rem;
+
             .btn-primary {
               width: auto;
               margin-left: auto;

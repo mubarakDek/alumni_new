@@ -12,18 +12,28 @@ import useSWR from "swr";
 
 function Members() {
   const { data, error } = useSWR(`${apiURL}/items/member`);
+  const { data: detail } = useSWR(`${apiURL}/items/memberdetail`);
 
   if (error) {
     return (
-      <div style={{ height: "40vh", textAlign: "center" }}>
-        <h3>something went wrong, please reload the page</h3>;
+      <div
+        className="error_reload_page"
+        style={{ height: "70vh", textAlign: "center" }}
+      >
+        <h3>
+          something went wrong, <br /> please reload page
+        </h3>
       </div>
     );
   }
 
-  if (data) {
+  if (data && detail) {
     const { data: member } = data;
-    console.log(member);
+    const { data: memberdetail } = detail;
+    const [...mem] = memberdetail;
+    const [m] = mem;
+
+    console.log(m);
 
     return (
       <section className="members">
@@ -48,7 +58,7 @@ function Members() {
                     <Member
                       fname={post.firstname}
                       lname={post.lastname}
-                      imgId={post.photo || ""}
+                      imgId={post.id === m.memberid ? m.photo : ""}
                       degree={post.degree}
                     />
                   </div>

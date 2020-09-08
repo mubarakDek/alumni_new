@@ -3,7 +3,6 @@ import { Link } from "@reach/router";
 import "../login/loginStyle.scss";
 import SectionTitle from "../SectionTitle";
 
-
 function Login() {
   return (
     <section className="login">
@@ -23,7 +22,7 @@ function Login() {
 
           <div className="create_account">
             <p>
-              New User? <Link to="/signup">Create Account</Link>
+              <Link to="/login">Please click HERE to LOGIN</Link>
             </p>
           </div>
         </div>
