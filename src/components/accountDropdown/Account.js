@@ -47,7 +47,7 @@ function AccountDropdown() {
       >
         <div className="popup_content ">
           <p onClick={() => setPopup(!popup)} className="popup_close">
-            & times;{" "}
+            &times;{" "}
           </p>{" "}
           <h3> Change Password </h3>{" "}
           <form action="">
