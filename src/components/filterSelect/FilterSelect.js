@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./filterSelectStyle.scss";
 
-function FilterSelect({ title }) {
+function FilterSelect({ title, options, filterData }) {
   const [active, setActive] = useState(false);
 
   function handleToggle(e) {
@@ -18,11 +18,23 @@ function FilterSelect({ title }) {
           <li onClick={handleToggle} className="option">
             {title}
           </li>
+
           <ul className="select_ul">
-            <li className="option">option 1</li>
-            <li className="option">option 1</li>
-            <li className="option">option 1</li>
-            <li className="option">option 1</li>
+            {options?.length > 0 ? (
+              options.map(function (item, index) {
+                return (
+                  <li
+                    key={index}
+                    onClick={() => filterData(item)}
+                    className="option"
+                  >
+                    {item}
+                  </li>
+                );
+              })
+            ) : (
+              <li>No option</li>
+            )}
           </ul>
         </ul>
       </div>
