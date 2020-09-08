@@ -51,7 +51,31 @@ function Members() {
     axios
       .get(`${apiURL}/items/member`)
       .then((res) => {
-        let newData = res.data.data.filter((user) => user.year.includes(value));
+        let newData;
+
+        let [...newArray] = res.data.data;
+
+        newArray.forEach((e) => {
+          if (e.year.includes(value)) {
+            newData = newArray.filter((user) => user.year.includes(value));
+          }
+        });
+
+        newArray.forEach((e) => {
+          if (e.degree.includes(value)) {
+            newData = newArray.filter((user) => user.degree.includes(value));
+          }
+        });
+
+        newArray.forEach((e) => {
+          let data;
+          if (value === "ICT") data = 1;
+          newData = newArray.filter((user) => user.department_id == data);
+        });
+
+        newArray.forEach((e) => {
+          console.log(e);
+        });
 
         setData({ data: newData });
         setLoading(false);
@@ -105,7 +129,7 @@ function Members() {
                 />
                 <FilterSelect
                   title="Faculty"
-                  options={["ICT", "Engineering", "Accounting"]}
+                  options={["ICT", "2", "3"]}
                   filterData={filterData}
                 />
                 <FilterSelect

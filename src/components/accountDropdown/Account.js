@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link, navigate } from "@reach/router";
+import { Link } from "@reach/router";
 import "../../components/accountDropdown/accountStyle.scss";
 import Input from "../input/Input";
 import { UserContext } from "../../context/userContext";
@@ -114,11 +114,7 @@ function AccountDropdown() {
       >
         <div className="popup_content ">
           <p onClick={() => setPopup(!popup)} className="popup_close">
-<<<<<<< HEAD
-            &times;{" "}
-=======
             &times;
->>>>>>> a09b7491509bac2f7530dd22599a66fdd34ffa60
           </p>{" "}
           <h3 style={{ color: "red" }}>{message}</h3>
           <h3> Change Password </h3>{" "}
