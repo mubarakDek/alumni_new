@@ -3,6 +3,7 @@ import "../about/aboutStyle.scss";
 import Hero from "../../components/hero/Hero";
 import SectionTitle from "../../components/SectionTitle";
 import Loader from "../../components/loader";
+import admasBuilding from "../../images/building.jpg";
 
 import axios from "axios";
 
@@ -31,7 +32,7 @@ function About() {
           <div className="about_content_wrap">
             <div className="about_content_wrap_left">
               <div className="img_container">
-                <img src="../../images/building.jpg" alt="aboutImage" />
+                <img src={admasBuilding} alt="aboutImage" />
               </div>
               <div className="mission">
                 <h1>Our Mission</h1>

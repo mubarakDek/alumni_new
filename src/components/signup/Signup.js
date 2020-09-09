@@ -12,7 +12,7 @@ import axios from "axios";
 import { apiURL } from "../../globals";
 
 //password encription
-import { passwordEncode, passwordDecode } from "../../helpers";
+import { passwordEncode } from "../../helpers";
 
 // swr library
 import useSWR from "swr";
@@ -80,6 +80,8 @@ function Signup(props) {
                   label="First Name *"
                   type="text"
                   name="firstname"
+                  pattern="[A-Za-z]{3,10}"
+                  title="Data qaldan ayaad Galisay"
                   placeholder="First Name"
                   required={true}
                   onChange={handleInputChange}

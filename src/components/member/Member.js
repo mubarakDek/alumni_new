@@ -8,10 +8,11 @@ import { apiURL } from "../../globals";
 import useSWR from "swr";
 
 function Member({ fname, lname, degree, imgId }) {
-  const { data } = useSWR(`${apiURL}/files/${imgId || 17}`);
+  const { data } = useSWR(`${apiURL}/files/${imgId}`);
   let img = "./images/profile_placeholder.png";
   if (data) {
     img = data.data.data.full_url;
+    console.log(data.data.data.full_url);
   }
 
   return (

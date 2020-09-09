@@ -119,12 +119,22 @@ function Members() {
             </div>
             <div className="members_content_main_right px-4 pt-4">
               {member.map((post) => {
+                let imgId = 17;
+                {
+                  /* find member photo */
+                }
+                memberdetail.forEach((detail) => {
+                  if (detail.memberid === post.id) {
+                    imgId = detail.photo;
+                  }
+                });
+
                 return (
                   <div key={post.id}>
                     <Member
                       fname={post.firstname}
                       lname={post.lastname}
-                      imgId={post.id === m.memberid ? m.photo : ""}
+                      imgId={imgId}
                       degree={post.degree}
                     />
                   </div>

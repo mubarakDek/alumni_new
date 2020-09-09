@@ -3,6 +3,8 @@ import { Link } from "@reach/router";
 import AccountDropdown from "./accountDropdown/Account";
 import { UserContext } from "../context/userContext";
 
+import logo from "../images/logo.png";
+
 function Navbar() {
   const { state } = useContext(UserContext);
   let [, setIsloggedIn] = useState(false);
@@ -22,7 +24,7 @@ function Navbar() {
     <nav className="nav">
       <div className="main-navigation">
         <div className="brand">
-          <img className="logo" src="./images/logo.png" alt="University logo" />
+          <img className="logo" src={logo} alt="University logo" />
         </div>
         <ul className="menu active">
           <Link className="menu_link" to="/">
