@@ -92,7 +92,6 @@ function Members() {
   if (data && detail) {
     const { data: member } = data;
     const { data: memberdetail } = detail;
-    const [...mem] = memberdetail;
 
     if (!member) {
       return <Loader></Loader>;

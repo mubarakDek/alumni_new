@@ -48,7 +48,7 @@ function Login() {
 
             if (passwordDecode(obj.password) === user.password) {
               dispatch({ type: "LOGIN", payload: obj });
-              navigate("/profile");
+              navigate("/");
               break;
             } else {
               setMessage("Invalid Credentials");
@@ -90,7 +90,6 @@ function Login() {
                 <input type="checkbox" id="rememberMe" />
                 <label htmlFor="rememberMe">Remeber Me</label>
               </div>
-              <Link to="/about">Forgot Password?</Link>
             </div>
             <div className="btn">
               <button className="btn-primary ml-auto px-4 mt-2">Login</button>

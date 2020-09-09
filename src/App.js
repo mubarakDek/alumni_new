@@ -15,6 +15,7 @@ import Signup from "./components/signup/Signup";
 import Profile from "./pages/profile/Profile";
 import SingleNews from "./pages/singleNews/SingleNews";
 import SingleEvent from "./pages/singleEvent/SingleEvent";
+import Donate from "./pages/donate/Donate";
 
 //context
 import UserContextProver from "./context/userContext";
@@ -38,6 +39,7 @@ function App() {
           <Profile path="profile" />
           <SingleNews path="singleNews/:id/:imgId" />
           <SingleEvent path="singleEvent/:id/:imgId" />
+          <Donate path="/donate" />
         </Router>
       </UserContextProver>
       <Footer />

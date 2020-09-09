@@ -11,6 +11,7 @@ import useSWR from "swr";
 function Board() {
   const { data, error } = useSWR(`${apiURL}/items/member`);
   const { data: detail } = useSWR(`${apiURL}/items/memberdetail`);
+  const { data: boardMembers } = useSWR(`${apiURL}/items/board`);
 
   if (error) {
     return (
@@ -20,17 +21,19 @@ function Board() {
     );
   }
 
-  if (data && detail) {
+  if (data && detail && boardMembers) {
     const { data: member } = data;
     const { data: memberdetail } = detail;
-    const [...mem] = memberdetail;
-    const [m] = mem;
+    const { data: board } = boardMembers;
+
+    console.log(board);
 
     return (
       <section className="board">
         <div className="board_content mx-auto p-5">
-          <h1>Board Members</h1>
+          <h1>{board[0].title}</h1>
           <p>
+            {/* {board[0].body} */}
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Delectus
             natus porro aperiam voluptas maxime totam, assumenda quibusdam,
             veritatis numquam at doloremque officiis saepe obcaecati labore
@@ -48,15 +51,32 @@ function Board() {
             {member
               .filter((e) => e.board === true)
               .map((post) => {
+                let imgId = "";
+                {
+                  /* find member photo */
+                }
+                memberdetail.forEach((detail) => {
+                  if (detail.memberid === post.id) {
+                    imgId = detail.photo;
+                  }
+                });
+
+                let dept;
+                if (post.department_id === 1) dept = "ICT";
+                if (post.department_id === 2) dept = "Development Studies";
+                if (post.department_id === 3) dept = "Social Work";
+                if (post.department_id === 4) dept = "Human Resource";
+                if (post.department_id === 5) dept = "Architecture";
+                if (post.department_id === 6) dept = "Pharmacology";
                 return (
                   <div key={post.id} className="board_content_list_item">
                     <BoardMember
                       fname={post.firstname}
                       lname={post.lastname}
-                      imgId={post.id === m.memberid ? m.photo : ""}
+                      imgId={imgId}
                       degree={post.degree}
                       email={post.email}
-                      department={post.department_id}
+                      department={dept}
                     />
                   </div>
                 );

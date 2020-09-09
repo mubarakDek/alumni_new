@@ -99,9 +99,6 @@ function Events() {
                 );
               })}
           </div>
-          <button className="btn-primary mx-auto mt-4" type="button">
-            Load More
-          </button>
         </div>
 
         {/* Completed Events*/}
@@ -125,9 +122,6 @@ function Events() {
                 );
               })}
           </div>
-          <button className="btn-primary mx-auto mt-4" type="button">
-            Load More
-          </button>
         </div>
       </section>
     );
