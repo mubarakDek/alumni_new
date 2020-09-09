@@ -86,7 +86,6 @@ function Profile() {
           }
         })
         .catch((err) => {
-          console.log(err);
           setMessage("Please Fill all fields with correct Data to update.");
         });
 

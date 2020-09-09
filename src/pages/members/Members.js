@@ -51,7 +51,30 @@ function Members() {
     axios
       .get(`${apiURL}/items/member`)
       .then((res) => {
-        let newData = res.data.data.filter((user) => user.year.includes(value));
+        let newData;
+
+        let [...newArray] = res.data.data;
+
+        newArray.forEach((e) => {
+          if (e.year.includes(value)) {
+            newData = newArray.filter((user) => user.year.includes(value));
+          }
+
+          if (e.degree.includes(value)) {
+            newData = newArray.filter((user) => user.degree.includes(value));
+          }
+
+          let data;
+          if (value === "ICT") data = 1;
+          if (value === "DS") data = 2;
+          if (value === "SW") data = 3;
+          if (value === "HRM") data = 4;
+          if (value === "Arch") data = 5;
+          if (value === "PH") data = 6;
+          if (data) {
+            newData = newArray.filter((user) => user.department_id === data);
+          }
+        });
 
         setData({ data: newData });
         setLoading(false);
@@ -70,7 +93,6 @@ function Members() {
     const { data: member } = data;
     const { data: memberdetail } = detail;
     const [...mem] = memberdetail;
-    const [m] = mem;
 
     if (!member) {
       return <Loader></Loader>;
@@ -79,7 +101,7 @@ function Members() {
     return (
       <section className="members">
         <div className="members_content mx-auto p-5">
-          <SectionTitle title="Search" className="mb-0" />
+          <SectionTitle title="Alumni Members" className="mb-0" />
 
           <div className="members_content_main">
             <div className="members_content_main_left">
@@ -105,7 +127,7 @@ function Members() {
                 />
                 <FilterSelect
                   title="Faculty"
-                  options={["ICT", "Engineering", "Accounting"]}
+                  options={["ICT", "DS", "SW", "HRM", "Arch", "PH"]}
                   filterData={filterData}
                 />
                 <FilterSelect
@@ -113,8 +135,6 @@ function Members() {
                   title="Degree"
                   options={["Bachelor", "Masters"]}
                 />
-                <FilterSelect filterData={filterData} title="Location" />
-                <FilterSelect filterData={filterData} title="Other Education" />
               </div>
             </div>
             <div className="members_content_main_right px-4 pt-4">
@@ -132,6 +152,7 @@ function Members() {
                 return (
                   <div key={post.id}>
                     <Member
+                      memId={post.id}
                       fname={post.firstname}
                       lname={post.lastname}
                       imgId={imgId}

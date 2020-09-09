@@ -80,11 +80,12 @@ function Signup(props) {
                   label="First Name *"
                   type="text"
                   name="firstname"
-                  pattern="[A-Za-z]{3,10}"
-                  title="Data qaldan ayaad Galisay"
                   placeholder="First Name"
                   required={true}
                   onChange={handleInputChange}
+                  pattern="[a-Z]"
+                  title="Firstname can contain only English letters a-z A-Z"
+                  minLength={3}
                 />
                 <Input
                   label="Last Name *"
@@ -93,6 +94,9 @@ function Signup(props) {
                   placeholder="Last Name"
                   required={true}
                   onChange={(e) => handleInputChange(e)}
+                  pattern={"*[a-zA-Z]"}
+                  title={"Lastname can contain only English letters a-z A-Z"}
+                  minLength={3}
                 />
               </div>
 
@@ -103,6 +107,10 @@ function Signup(props) {
                   name="email"
                   placeholder="Email"
                   onChange={(e) => handleInputChange(e)}
+                  pattern={
+                    "^([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22))*\x40([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d))*$"
+                  }
+                  title="The domain portion of the email address is invalid "
                 />
                 <Input
                   label="Mobile"
@@ -110,6 +118,9 @@ function Signup(props) {
                   name="number"
                   placeholder="Mobile"
                   onChange={(e) => handleInputChange(e)}
+                  pattern={"[0-9]"}
+                  title={"Mobile can contain only 0-9"}
+                  minLength={7}
                 />
               </div>
               <div className="form_group">
@@ -154,6 +165,8 @@ function Signup(props) {
                   placeholder="Password"
                   required
                   onChange={(e) => handleInputChange(e)}
+                  pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$"
+                  title="Please include at least 1 uppercase character, 1 lowercase character, and 1 number."
                 />
               </div>
               <div className="form_group radio">
