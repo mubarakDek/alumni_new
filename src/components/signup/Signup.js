@@ -83,7 +83,7 @@ function Signup(props) {
                   placeholder="First Name"
                   required={true}
                   onChange={handleInputChange}
-                  pattern="[a-Z]{3,15}"
+                  pattern="[a-zA-Z]{3,15}"
                   title="Firstname can contain only English letters a-z A-Z"
                   minLength={3}
                 />
